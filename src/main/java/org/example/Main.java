@@ -30,12 +30,18 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        print();    // Stampanje imena i prezimena pre fakera.
+        System.err.println("----------------------");
+        System.err.println("Stampanje imena i prezimena PRE fakera.");
         write();    // Stampanje druga dva imena i prezimena unesena kroz metodu za ispis.
+        print();    // Stampanje imena i prezimena pre fakera.
+        System.err.println("----------------------");
 
         Faker faker = new Faker();  // Kreiranje objekta "faker" iz klase "Faker" koji se prosledjuje metodi kao parametar.
         writeFaker(faker);  // Prosledjivanje objekta metodi za dalju obradu random imena i prezimena za upis u Excel fajl.
-        printFaker();   // Stampanje svih imena i prezimena iz tabele koji su dodati kroz faker metodu.
+        System.err.println("----------------------");
+        System.err.println("Stampanje imena i prezimena POSLE fakera.");
+        print();
+        System.err.println("----------------------");
 
     }
 
@@ -47,7 +53,7 @@ public class Main {
             XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
             XSSFSheet sheet = workbook.getSheet("Sheet1");
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 100; i++) {
                 XSSFRow row = sheet.getRow(i);
                 if (row == null) {
                     break;
@@ -72,27 +78,27 @@ public class Main {
         XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
         XSSFSheet sheet = workbook.getSheet("Sheet1");
 
-        for (int i = 2; i < 3; i++) {
+        for (int i = 0; i < 1; i++) {
             XSSFRow row = sheet.createRow(i);
             for (int j = 0; j < 1; j++) {
                 XSSFCell cell = row.createCell(j);
-                cell.setCellValue("Marko");
+                cell.setCellValue("Milan");
             }
             for (int j = 1; j < 2; j++) {
                 XSSFCell cell = row.createCell(j);
-                cell.setCellValue("Jeremic");
+                cell.setCellValue("Stanojevic");
             }
         }
 
-        for (int i = 3; i < 4; i++) {
+        for (int i = 1; i < 2; i++) {
             XSSFRow row = sheet.createRow(i);
             for (int j = 0; j < 1; j++) {
                 XSSFCell cell = row.createCell(j);
-                cell.setCellValue("Nikola");
+                cell.setCellValue("Milos");
             }
             for (int j = 1; j < 2; j++) {
                 XSSFCell cell = row.createCell(j);
-                cell.setCellValue("Milosavljevic");
+                cell.setCellValue("Garunovic");
             }
         }
         FileOutputStream fileOutputStream = new FileOutputStream("domaci22.xlsx");
@@ -106,7 +112,7 @@ public class Main {
         XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
         XSSFSheet sheet = workbook.getSheet("Sheet1");
 
-        for (int i = 4; i < 12; i++) {
+        for (int i = 2; i < 10; i++) {
             XSSFRow row = sheet.createRow(i);
             for (int j = 0; j < 1; j++) {
                 XSSFCell cell = row.createCell(j);
@@ -120,29 +126,5 @@ public class Main {
         FileOutputStream fileOutputStream = new FileOutputStream("domaci22.xlsx");
         workbook.write(fileOutputStream);
         fileOutputStream.close();
-    }
-
-    public static void printFaker(){
-
-        FileInputStream fileInputStream = null;
-        try {
-            fileInputStream = new FileInputStream("domaci22.xlsx");
-            XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
-            XSSFSheet sheet = workbook.getSheet("Sheet1");
-
-            for (int i = 4; i < 11; i++) {
-                XSSFRow row = sheet.getRow(i);
-
-                for (int j = 0; j < 2; j++) {
-                    XSSFCell cell = row.getCell(j);
-                    System.out.print(cell.getStringCellValue() + " ");
-                }
-                System.out.println();
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
