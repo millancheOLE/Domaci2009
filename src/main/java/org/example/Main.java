@@ -40,7 +40,9 @@ public class Main {
         writeFaker(faker);  // Prosledjivanje objekta metodi za dalju obradu random imena i prezimena za upis u Excel fajl.
         System.err.println("----------------------");
         System.err.println("Stampanje imena i prezimena POSLE fakera.");
-        print();
+        print();    // Ako se kompajliranje pokrece drugi put, u prvoj stampi stampace i rezultate iz prethodnog generisanja (regularno + faker).
+        // Prvo sam radio posebnu metodu koja je stampala samo faker i nije imala ovaj problem, ali sam je izbrisao jer sam video da pise da se koristi ista metoda
+        // i da se samo ogranici "null", odnosno gde prestaje stampa.
         System.err.println("----------------------");
 
     }
