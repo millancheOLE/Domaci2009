@@ -32,15 +32,15 @@ public class Main {
 
         System.err.println("----------------------");
         System.err.println("Stampanje imena i prezimena PRE fakera.");
-        write();    // Stampanje druga dva imena i prezimena unesena kroz metodu za ispis.
-        print();    // Stampanje imena i prezimena pre fakera.
+        write();    // Upis rucno unesenih imena i prezimena kroz metodu za upis.
+        print();    // Ispis rucno unesenih imena i prezimena pre fakera.
         System.err.println("----------------------");
 
         Faker faker = new Faker();  // Kreiranje objekta "faker" iz klase "Faker" koji se prosledjuje metodi kao parametar.
-        writeFaker(faker);  // Prosledjivanje objekta metodi za dalju obradu random imena i prezimena za upis u Excel fajl.
+        writeFaker(faker);  // Prosledjivanje objekta metodi za dalji generisani upis imena i prezimena u Excel fajl.
         System.err.println("----------------------");
         System.err.println("Stampanje imena i prezimena POSLE fakera.");
-        print();    // Ako se kompajliranje pokrece drugi put, u prvoj stampi stampace i rezultate iz prethodnog generisanja (regularno + faker).
+        print();    // Ako se kompajliranje pokrece prvi put, sve je ok. Ako se kompajliranje pokrece drugi put, stampace i rezultate iz prethodnog generisanja (regularno + faker).
         // Prvo sam radio posebnu metodu koja je stampala samo faker i nije imala ovaj problem, ali sam je izbrisao jer sam video da pise da se koristi ista metoda
         // i da se samo ogranici "null", odnosno gde prestaje stampa.
         System.err.println("----------------------");
